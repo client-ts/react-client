@@ -16,6 +16,7 @@
   "bugs": {
     "url": "https://github.com/client-ts/react-client.git/issues"
   },
+  "private": false,
   "homepage": "https://github.com/client-ts/react-client.git#readme",
   "keywords": [
     "http",
