@@ -30,7 +30,7 @@ export const createQueryEngine = function <C extends ClientBuilder>(client: Clie
         RR extends keyof C[R]['routes'],
         Response extends (C[R]['routes'][RR] extends RouteDef<infer Response, infer Args> ? Response : never)
     > (resource: R, route: RR) {
-        const [state, setState] = useState($createState({
+        const [state, setState] = useState($createState<Response>({
             status: "idle",
             result: null,
             error: null
