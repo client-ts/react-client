@@ -1,5 +1,5 @@
 import {Client, ClientBuilder, Result, RouteDef} from "@client.ts/core";
-import {useState, useRef} from "react";
+import {useState, useRef, useEffect} from "react";
 
 export type QueryState = "unused" | "loading" | "error" | "aborted" | "ok";
 export const createQueryEngine = function <C extends ClientBuilder>(client: Client<C>) {
@@ -46,5 +46,19 @@ export const createQueryEngine = function <C extends ClientBuilder>(client: Clie
 
         return [query, state] as const;
     }
-    return { useRoute } as const;
+
+    const useImmediatelyFiringRoute = function <
+        R extends keyof C,
+        RR extends keyof C[R]['routes'],
+        Args extends C[R]['routes'][RR] extends RouteDef<infer Response, infer Args> ? Args : never
+    > (resource: R, route: RR, ...args: Args) {
+        const [query, state] = useRoute(resource, route);
+        useEffect(() => {
+            query(...args);
+        }, []);
+
+        return state;
+    }
+
+    return { useRoute, useImmediatelyFiringRoute } as const;
 }
