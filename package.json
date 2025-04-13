@@ -1,0 +1,34 @@
+{
+  "name": "client-ts-react",
+  "version": "1.1.0-rc.5",
+  "description": "Better React-support for Client.ts",
+  "scripts": {
+    "build": "tsup src/ --dts --sourcemap"
+  },
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/client-ts/react.git"
+  },
+  "author": "Shindou Mihou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/client-ts/react.git/issues"
+  },
+  "homepage": "https://github.com/client-ts/react.git#readme",
+  "keywords": [
+    "http",
+    "react"
+  ],
+  "dependencies": {
+    "@client.ts/core": "^1.1.0-rc.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}
