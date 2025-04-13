@@ -25,8 +25,7 @@ export const createQueryEngine = function <C extends ClientBuilder>(client: Clie
             abortController.current = new AbortController();
             setState({ status: "loading", result: null, error: null});
 
-            // @ts-ignore
-            const routeDef = client[resource]['routes'][route as string] as (...args: Args) => Promise<Result<Response>>;
+            const routeDef = client[resource][route as string] as (...args: Args) => Promise<Result<Response>>;
 
             routeDef(...args)
                 .then((result) => {
