@@ -20,7 +20,7 @@ npm install "@client.ts/react"
 This guide assumes that you understand and already use Client.ts:
 
 ```ts
-import {createQueryEngine} from "./createQueryEngine";
+import {createQueryEngine} from "@client.ts/react";
 
 // This assumes that you already have a Client.ts instance existing.
 // To get started with the React module, simply declare these two lines anywhere.
@@ -36,24 +36,24 @@ import {useEffect} from "react";
 
 export default function Test() {
     // In this example, we use the route called "route" under the resource called "resource".
-    const [query, state] = useRoute("resource", "route");
+    const [queryRoute, routeState] = useRoute("resource", "route");
 
     useEffect(() => {
-        query("args can be put here, it should be properly typechecked");
+        queryRoute("args can be put here, it should be properly typechecked");
     }, []);
 
-    if (state.status === "unused" || state.status === "loading") {
+    if (routeState.isLoading) {
         return (<p>Loading...</p>);
     }
 
-    if (state.status === "error") {
-        return (<p>An error occurred: {state.error}</p>)
+    if (routeState.isError) {
+        return (<p>An error occurred: {routeState.error}</p>)
     }
 
     return (
         <div>
             <h1>Data</h1>
-            <pre>{JSON.stringify(state.data, null, 2)}</pre>
+            <pre>{JSON.stringify(routeState.data, null, 2)}</pre>
         </div>
     )
 }
