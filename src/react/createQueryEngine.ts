@@ -39,20 +39,20 @@ export const createQueryEngine = function <C extends ClientBuilder>(client: Clie
         const query = function <
             Args extends C[R]['routes'][RR] extends RouteDef<infer Response, infer Args> ? Args : never
         >(...args: Args) {
-            setState($createState({ status: "loading", result: null, error: null}));
+            setState($createState<Response>({ status: "loading", result: null, error: null}));
 
             const routeDef = client[resource][route as string] as (...args: Args) => Promise<Result<Response>>;
 
             routeDef(...args)
                 .then((result) => {
-                    setState($createState({
+                    setState($createState<Response>({
                         status: "ok",
                         result: result,
                         error: null
                     }));
                 })
                 .catch((err) => {
-                    setState($createState({
+                    setState($createState<Response>({
                         status: "error",
                         result: null,
                         error: err
