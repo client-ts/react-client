@@ -1,5 +1,5 @@
 {
-  "name": "client-ts-react",
+  "name": "@client.ts/react",
   "version": "1.1.0-rc.5",
   "description": "Better React-support for Client.ts",
   "scripts": {
@@ -9,14 +9,14 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/client-ts/react.git"
+    "url": "git+https://github.com/client-ts/react-client.git"
   },
   "author": "Shindou Mihou",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/client-ts/react.git/issues"
+    "url": "https://github.com/client-ts/react-client.git/issues"
   },
-  "homepage": "https://github.com/client-ts/react.git#readme",
+  "homepage": "https://github.com/client-ts/react-client.git#readme",
   "keywords": [
     "http",
     "react"
